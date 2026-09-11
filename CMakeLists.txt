@@ -3,4 +3,4 @@
 cmake_minimum_required(VERSION 3.22)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(Dual-Core Sensor Dispatcher (Basics of Tasks & Queues))
+project(Dual_Core_Sensor_Dispatcher_Basics_of_Tasks_and_Queues)

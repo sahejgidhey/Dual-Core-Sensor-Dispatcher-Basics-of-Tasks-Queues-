@@ -19,18 +19,5 @@
       "inheritDefault": "hidden"
     }
   },
-  "idf.openOcdConfigs": [
-    "board/esp32-wrover-kit-3.3v.cfg"
-  ],
-  "idf.port": "detect",
-  "idf.currentSetup": "/Users/sahej/.espressif/v6.0.2/esp-idf",
-  "idf.customExtraVars": {
-    "IDF_TARGET": "esp32"
-  },
-  "clangd.path": "/Users/sahej/.espressif/tools/esp-clang/esp-20.1.1_20250829/esp-clang/bin/clangd",
-  "clangd.arguments": [
-    "--background-index",
-    "--query-driver=**",
-    "--compile-commands-dir=/Users/sahej/Dual-Core Sensor Dispatcher (Basics of Tasks & Queues)/build"
-  ]
+  "idf.currentSetup": "/Users/sahej/.espressif/v6.0.2/esp-idf"
 }
