@@ -4,18 +4,19 @@
 
 #define TAG "DHT11"
 
+// this function is used for calculating the time of a bit 
 static int64_t wait_for_state(int state, int64_t timeout_us , int pin_num) 
 {
-    int64_t start_time = esp_timer_get_time();
+    int64_t start_time = esp_timer_get_time(); // this get the start time 
 
-    while (gpio_get_level(pin_num) != state) 
+    while (gpio_get_level(pin_num) != state) // this check when the state change so the bit time is over
     {
-        if ((esp_timer_get_time() - start_time) > timeout_us) 
+        if ((esp_timer_get_time() - start_time) > timeout_us) // this check if the bit is lower the timeout 
         {
             return -1; // Timeout failed
         }
     }
-    return esp_timer_get_time() - start_time;
+    return esp_timer_get_time() - start_time; // this is returned when timeout is passed 
 }
 
 
@@ -29,7 +30,7 @@ void dht11_sensor_wake_up(int pin_num)
         .pull_up_en = GPIO_PULLUP_DISABLE
     };
 
-    gpio_config(&pin_config);
+    gpio_config(&pin_config); // this is config to output mode
 
     gpio_set_level(pin_num,0);
     vTaskDelay(pdMS_TO_TICKS(20));
@@ -41,7 +42,7 @@ void dht11_sensor_wake_up(int pin_num)
     pin_config.mode = GPIO_MODE_INPUT; // this turn the sensor pin in input pin 
     pin_config.pull_up_en = GPIO_PULLUP_ENABLE;
 
-    gpio_config(&pin_config);
+    gpio_config(&pin_config); // this config to input mode
 
     // Expect DHT11 to pull line LOW for ~80us
     if (wait_for_state(0 , 100 , pin_num) < 0 || wait_for_state(1 , 100 , pin_num) < 0) 
@@ -54,6 +55,8 @@ void dht11_sensor_wake_up(int pin_num)
     {
         ESP_LOGE(TAG, "Handshake Error: Sensor did not respond HIGH.");
     }
+
+    // these two if statement check if the sensor is init and working fine
 
 }
 

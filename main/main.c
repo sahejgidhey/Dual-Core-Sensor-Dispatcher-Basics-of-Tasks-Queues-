@@ -9,8 +9,7 @@
 #define LED_ALERT GPIO_NUM_14
 #define BUZZER_PIN GPIO_NUM_23
 
-uint8_t data[5];
-adc_oneshot_unit_handle_t ldr_handle;
+adc_oneshot_unit_handle_t ldr_handle; // this is adc handle is used for LDR
 
 void app_main(void)
 {
