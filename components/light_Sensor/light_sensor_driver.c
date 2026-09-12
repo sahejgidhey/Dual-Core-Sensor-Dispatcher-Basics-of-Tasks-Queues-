@@ -31,11 +31,11 @@ void light_sensor_config(adc_oneshot_unit_handle_t *adc1_handle , adc_channel_t 
 
 }
 
-float light_sensor_data_read(adc_oneshot_unit_handle_t adc1_handle , adc_channel_t adc_channel)
+float light_sensor_data_read(adc_oneshot_unit_handle_t adc1_handle , adc_channel_t pin_num)
 {
 
     int raw_voltage = 0; // this is the raw voltage from 0 to 4950(because of 12 bit adc channel)
-    adc_oneshot_read(adc1_handle,adc_channel,&raw_voltage); // this reads the and put the value in raw_volatage 
+    adc_oneshot_read(adc1_handle,pin_num,&raw_voltage); // this reads the and put the value in raw_volatage 
 
     return (float) (raw_voltage/4950.0f)*100.0f;// this converts it into percemtage and returns as float
     
