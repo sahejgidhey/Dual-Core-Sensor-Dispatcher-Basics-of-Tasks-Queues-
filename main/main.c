@@ -96,7 +96,7 @@ void alert_output_task(void *vParameter)
 void app_main(void)
 {
 
-    data_queue = xQueueCreate(2 , sizeof(task_data_t)); // Here the queue lenght is set
+    data_queue = xQueueCreate(10 , sizeof(task_data_t)); // Here the queue lenght is set
 
     xTaskCreatePinnedToCore(sensor_read_task , "Sensor read" , 2048 , NULL , 1 , NULL , 0);
     xTaskCreatePinnedToCore(alert_output_task , "Alert task" , 2048 , NULL , 1 , NULL , 1);
